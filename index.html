@@ -11,12 +11,13 @@
 <body>
     <section class="hidden" > 
     <body>
+    <p>Toque em qualquer lugar da tela para iniciar a música.</p>
+
     <audio id="bgAudio" loop preload="auto">
-        <source src="CLARAO.mp3" type="audio/mpeg">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
         Seu navegador não suporta o elemento de áudio.
     </audio>
 
-    <!-- Controle de volume -->
     <div style="position: fixed; bottom: 10px; right: 10px; background: rgba(255,255,255,0.8); padding: 5px; border-radius: 5px;">
         <label for="volumeControl">Volume:</label>
         <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="0.5">
@@ -25,23 +26,21 @@
     <script>
         const audio = document.getElementById('bgAudio');
         const volumeControl = document.getElementById('volumeControl');
-
-        // Ajusta o volume inicial
         audio.volume = 0.5;
 
-        // Altera volume com o controle deslizante
         volumeControl.addEventListener('input', function () {
             audio.volume = this.value;
         });
 
-        // Garante autoplay após interação
         document.addEventListener('click', function () {
             if (audio.paused) {
-                audio.play().catch(e => console.log('Autoplay bloqueado:', e));
+                audio.play().catch(e => {
+                    console.log("Erro ao tocar o áudio:", e);
+                });
             }
         });
     </script>
-</body>
+    </body>
             
         <h1>Espero que goste</h1>
         <p>Para ti, João Guilherme</p>
